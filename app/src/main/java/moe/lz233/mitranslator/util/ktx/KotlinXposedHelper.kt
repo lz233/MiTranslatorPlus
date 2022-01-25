@@ -17,7 +17,7 @@ import java.lang.reflect.Member
 typealias MethodHookParam = MethodHookParam
 
 fun Class<*>.hookMethod(method: String?, vararg args: Any?) = try {
-    LogUtil._d(tag = "HOOKMITRANLATOR", obj = "Hook ${name}.$method Successful")
+    LogUtil._d(tag = "HOOKMITRANSLATOR", obj = "Hook ${name}.$method Successfully")
     findAndHookMethod(this, method, *args)
 } catch (e: NoSuchMethodError) {
     LogUtil.e(e)
