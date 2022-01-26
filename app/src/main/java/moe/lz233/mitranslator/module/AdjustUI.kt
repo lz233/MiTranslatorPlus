@@ -3,13 +3,16 @@ package moe.lz233.mitranslator.module
 import android.annotation.SuppressLint
 import android.app.WallpaperManager
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import moe.lz233.mitranslator.Config
 import moe.lz233.mitranslator.ModuleSP
 import moe.lz233.mitranslator.ViewFields
+import moe.lz233.mitranslator.util.ktx.getObjectField
 import moe.lz233.mitranslator.util.ktx.hookAfterMethod
+import moe.lz233.mitranslator.util.ktx.hookBeforeMethod
 
 class AdjustUI {
     @SuppressLint("MissingPermission")
@@ -40,8 +43,8 @@ class AdjustUI {
                 ViewFields.messageButton.visibility = View.GONE
             }
         }
-        "com.cleargrass.app.babel.launcher.TileView".hookAfterMethod("onDraw", Canvas::class.java) {
-            if (ModuleSP.sp.getBoolean("showWallpaper", false)) (it.thisObject as View).alpha = 0.5f
+        "com.cleargrass.app.babel.launcher.TileView".hookBeforeMethod("onDraw", Canvas::class.java) {
+            if (ModuleSP.sp.getBoolean("showWallpaper", false)) (it.thisObject.getObjectField("i") as Paint).alpha = 0
         }
     }
 }
