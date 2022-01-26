@@ -38,6 +38,10 @@ class HookSetting {
                 setPadding(dp2px(20f), dp2px(10f), dp2px(20f), dp2px(5f))
                 addView(FuckTextView.FastBuilder(mText = "Mi Translator +", mSize = FuckTextView.titleSize).build())
                 addView(FuckTextView.FastBuilder(mText = "${BuildConfig.VERSION_NAME} ${BuildConfig.VERSION_CODE} ${BuildConfig.BUILD_TYPE}").build())
+                addView(FuckTextView.Builder {
+                    text = "重启应用"
+                    setOnClickListener { exitProcess(0) }
+                }.build())
                 addView(FuckTextView.FastBuilder(mText = "界面", mSize = FuckTextView.title2Size).build())
                 addView(FuckSwitch.FastBuilder(mText = "壁纸", mKey = "showWallpaper").build())
                 addView(FuckSwitch.FastBuilder(mText = "翻译", mKey = "showTranslateButton", mDefaultState = true).build())
@@ -48,6 +52,10 @@ class HookSetting {
                 addView(FuckTextView.FastBuilder(mText = "应用", mSize = FuckTextView.title2Size).build())
                 addView(FuckSwitch.FastBuilder(mText = "白名单模式", mKey = "whileListMode", mDefaultState = true).build())
                 addView(FuckEditText.FastBuilder(mHint = "为 JSON 数组，如 [\"moe.lz233.mitranslator\"]，白名单模式下生效。", mKey = "appList").build())
+                addView(FuckTextView.FastBuilder(mText = "信息", mSize = FuckTextView.title2Size).build())
+                addView(FuckTextView.FastBuilder(mText = "Github", mUrl = "https://github.com/lz233/MiTranslatorPlus").build())
+                addView(FuckTextView.FastBuilder(mText = "Document", mUrl = "https://mitranslator.project.ac.cn").build())
+                addView(FuckTextView.FastBuilder(mText = "Release", mUrl = "https://modules.lsposed.org/module/moe.lz233.mitranslator").build())
             })
         })
         dialogBuilder.setPositiveButton("重启应用") { _: DialogInterface, _: Int -> exitProcess(0) }
