@@ -23,21 +23,11 @@ package moe.lz233.mitranslator.util
 
 import android.content.Context
 import android.content.res.Configuration
-import moe.lz233.mitranslator.util.ktx.callMethod
-import moe.lz233.mitranslator.util.ktx.callStaticMethod
-import java.util.*
-import kotlin.math.absoluteValue
+import moe.lz233.mitranslator.Config
 
 
-fun dp2px(context: Context, dpValue: Float): Int = (dpValue * context.resources.displayMetrics.density + 0.5f).toInt()
+fun dp2px(dpValue: Float, context: Context = Config.context): Int = (dpValue * context.resources.displayMetrics.density + 0.5f).toInt()
 
-fun sp2px(context: Context, spValue: Float): Int = (spValue * context.resources.displayMetrics.scaledDensity + 0.5f).toInt()
+fun sp2px(spValue: Float, context: Context = Config.context): Int = (spValue * context.resources.displayMetrics.scaledDensity + 0.5f).toInt()
 
 fun isNightMode(context: Context): Boolean = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-inline fun getColorFix(block: () -> String): String {
-    var string = block()
-    while (string.length < 6) {
-        string = "0$string"
-    }
-    return string
-}

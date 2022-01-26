@@ -320,7 +320,27 @@ inline fun String.hookBeforeConstructor(vararg args: Any?, classLoader: ClassLoa
     }
 })
 
+inline fun String.hookBeforeAllConstructors(classLoader: ClassLoader = Config.classLoader, crossinline hooker: (MethodHookParam) -> Unit) = findClass(classLoader).hookAllConstructors(object : XC_MethodHook() {
+    override fun beforeHookedMethod(param: MethodHookParam) {
+        try {
+            hooker(param)
+        } catch (e: Throwable) {
+            LogUtil.e(e)
+        }
+    }
+})
+
 inline fun String.hookAfterConstructor(vararg args: Any?, classLoader: ClassLoader = Config.classLoader, crossinline hooker: (MethodHookParam) -> Unit) = findClass(classLoader).hookConstructor(*args, object : XC_MethodHook() {
+    override fun afterHookedMethod(param: MethodHookParam) {
+        try {
+            hooker(param)
+        } catch (e: Throwable) {
+            LogUtil.e(e)
+        }
+    }
+})
+
+inline fun String.hookAfterAllConstructors(classLoader: ClassLoader = Config.classLoader, crossinline hooker: (MethodHookParam) -> Unit) = findClass(classLoader).hookAllConstructors(object : XC_MethodHook() {
     override fun afterHookedMethod(param: MethodHookParam) {
         try {
             hooker(param)
