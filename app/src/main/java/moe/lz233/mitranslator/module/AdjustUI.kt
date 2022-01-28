@@ -18,10 +18,12 @@ class AdjustUI {
     @SuppressLint("MissingPermission")
     fun init() {
         "com.cleargrass.app.babel.launcher.launch.main.MainFragment".hookAfterMethod("onViewCreated", View::class.java, Bundle::class.java) {
-            //hide scrollbar
+            // hide scrollbar
             ViewFields.rootView.isVerticalScrollBarEnabled = false
             if (ModuleSP.sp.getBoolean("showWallpaper", false)) {
+                // hide status bar
                 Config.activity.window.attributes = Config.activity.window.attributes.apply { flags += WindowManager.LayoutParams.FLAG_FULLSCREEN }
+                // reset text clock padding
                 ViewFields.textClock.setPadding(ViewFields.textClock.paddingLeft, ViewFields.textClock.paddingTop + 150, ViewFields.textClock.paddingRight, ViewFields.textClock.paddingBottom)
                 ViewFields.rootView.background = WallpaperManager.getInstance(Config.context).drawable
             }
