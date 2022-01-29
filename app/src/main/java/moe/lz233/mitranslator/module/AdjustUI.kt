@@ -13,6 +13,7 @@ import moe.lz233.mitranslator.ViewFields
 import moe.lz233.mitranslator.util.ktx.getObjectField
 import moe.lz233.mitranslator.util.ktx.hookAfterMethod
 import moe.lz233.mitranslator.util.ktx.hookBeforeMethod
+import moe.lz233.mitranslator.util.ktx.setObjectField
 
 class AdjustUI {
     @SuppressLint("MissingPermission")
@@ -46,7 +47,11 @@ class AdjustUI {
             }
         }
         "com.cleargrass.app.babel.launcher.TileView".hookBeforeMethod("onDraw", Canvas::class.java) {
+            // set background alpha to 0
             if (ModuleSP.sp.getBoolean("showWallpaper", false)) (it.thisObject.getObjectField("i") as Paint).alpha = 0
+            // remove mi font
+            it.thisObject.setObjectField("g", Paint().apply { color = -1;isAntiAlias = true })
+            it.thisObject.setObjectField("h", Paint().apply { color = -2130772226;isAntiAlias = true })
         }
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.res.Resources
 import android.content.res.XModuleResources
 import android.view.View
-import me.zhanghai.android.appiconloader.AppIconLoader
 
 const val PACKAGE_NAME = "com.cleargrass.app.babel.launcher"
 const val SP_NAME = "translator_plus"
@@ -17,5 +16,4 @@ object Config {
     lateinit var context: Context
     lateinit var classLoader: ClassLoader
     lateinit var activity: Activity
-    val appIconLoader by lazy { AppIconLoader(500,true, activity) }
 }
