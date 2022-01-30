@@ -40,8 +40,8 @@ class AppList {
                 }
             }
         }
-        "com.cleargrass.app.babel.launcher.TileView".hookAfterMethod("onDraw", Canvas::class.java) {
+        /*"com.cleargrass.app.babel.launcher.TileView".hookAfterMethod("onDraw", Canvas::class.java) {
             LogUtil.d("${it.thisObject.getObjectField("b")}\n${it.thisObject.getObjectField("a")!!.callMethod("getIntrinsicWidth")}\n${it.thisObject.getObjectField("a")!!.callMethod("getIntrinsicHeight")}\n${it.thisObject.callMethod("getMeasuredHeight")}")
-        }
+        }*/
     }
 }
