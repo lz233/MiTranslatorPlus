@@ -23,9 +23,10 @@ package moe.lz233.mitranslator.util
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import moe.lz233.mitranslator.Config
+import moe.lz233.mitranslator.meta.App
 
 
 fun dp2px(dpValue: Float, context: Context = Config.context): Int = (dpValue * context.resources.displayMetrics.density + 0.5f).toInt()
@@ -34,8 +35,10 @@ fun sp2px(spValue: Float, context: Context = Config.context): Int = (spValue * c
 
 fun isNightMode(context: Context): Boolean = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
 
-fun getAppList() = mutableListOf<ApplicationInfo>().apply {
-    Config.context.packageManager.queryIntentActivities(Intent(Intent.ACTION_MAIN, null).apply { addCategory(Intent.CATEGORY_LAUNCHER) }, 0).forEach {
-        add(Config.context.packageManager.getApplicationInfo(it.activityInfo.applicationInfo.packageName, 0))
+fun getAppList(packageManager: PackageManager = Config.context.packageManager) = mutableListOf<App>().apply {
+    packageManager.queryIntentActivities(Intent(Intent.ACTION_MAIN, null).apply { addCategory(Intent.CATEGORY_LAUNCHER) }, 0).forEach {
+        add(App(it.loadLabel(packageManager).toString(), Intent(Intent.ACTION_MAIN).apply {
+            setClassName(it.activityInfo.packageName,it.activityInfo.name)
+        },it.loadIcon(packageManager)))
     }
 }.toList()

@@ -27,9 +27,9 @@ class AppList {
             val moreDrawable = Config.context.resources.getDrawable(2131165304, Config.context.theme)
             getAppList().forEach {
                 linearLayout.addView(LayoutInflater.from(Config.context).inflate(R.layout.view_app, null).apply {
-                    Glide.with(Config.context).load(it.loadIcon(packageManager)).into(this.findViewById(R.id.icon))
+                    Glide.with(Config.context).load(it.icon).into(this.findViewById(R.id.icon))
                     //this.findViewById<ImageView>(R.id.icon).setImageDrawable(it.loadIcon(packageManager))
-                    this.findViewById<TextView>(R.id.title).text = it.loadLabel(packageManager)
+                    this.findViewById<TextView>(R.id.title).text = it.name
                     this.findViewById<ImageView>(R.id.more).setImageDrawable(moreDrawable)
                 })
                 //linearLayout.addView(getMatureTileView(it))
