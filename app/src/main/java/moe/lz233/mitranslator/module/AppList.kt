@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import moe.lz233.mitranslator.Config
 import moe.lz233.mitranslator.R
 import moe.lz233.mitranslator.ViewFields
@@ -27,8 +26,8 @@ class AppList {
             val moreDrawable = Config.context.resources.getDrawable(2131165304, Config.context.theme)
             getAppList().forEach {
                 linearLayout.addView(LayoutInflater.from(Config.context).inflate(R.layout.view_app, null).apply {
-                    Glide.with(Config.context).load(it.icon).into(this.findViewById(R.id.icon))
-                    //this.findViewById<ImageView>(R.id.icon).setImageDrawable(it.loadIcon(packageManager))
+                    //Glide.with(Config.context).load(it.icon).into(this.findViewById(R.id.icon))
+                    this.findViewById<ImageView>(R.id.icon).setImageDrawable(it.icon)
                     this.findViewById<TextView>(R.id.title).text = it.name
                     this.findViewById<ImageView>(R.id.more).setImageDrawable(moreDrawable)
                 })
