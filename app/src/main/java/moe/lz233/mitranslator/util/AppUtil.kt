@@ -25,6 +25,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.net.Uri
 import moe.lz233.mitranslator.Config
 import moe.lz233.mitranslator.meta.App
 
@@ -37,8 +38,8 @@ fun isNightMode(context: Context): Boolean = (context.resources.configuration.ui
 
 fun getAppList(packageManager: PackageManager = Config.context.packageManager) = mutableListOf<App>().apply {
     packageManager.queryIntentActivities(Intent(Intent.ACTION_MAIN, null).apply { addCategory(Intent.CATEGORY_LAUNCHER) }, 0).forEach {
-        add(App(it.loadLabel(packageManager).toString(), Intent(Intent.ACTION_MAIN).apply {
-            setClassName(it.activityInfo.packageName,it.activityInfo.name)
-        },it.loadIcon(packageManager)))
+        add(App(it.loadLabel(packageManager).toString(), it.activityInfo.packageName, Intent(Intent.ACTION_MAIN).apply {
+            setClassName(it.activityInfo.packageName, it.activityInfo.name)
+        }, it.loadIcon(packageManager)))
     }
 }.toList()
