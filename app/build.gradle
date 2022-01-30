@@ -29,6 +29,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    packagingOptions {
+        exclude 'META-INF/**'
+        exclude 'kotlin/**'
+        exclude 'okhttp3/**'
+        exclude 'org/**'
+        exclude '**.properties'
+        exclude '**.bin'
+    }
+    aaptOptions {
+        additionalParameters '--allow-reserved-package-id', '--package-id', '0x64'
+    }
 }
 
 dependencies {

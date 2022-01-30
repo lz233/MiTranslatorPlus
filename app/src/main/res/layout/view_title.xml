@@ -2,9 +2,9 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="更多功能"
-    android:textSize="15sp"
-    android:textColor="#fefefe"
+    android:paddingLeft="5dp"
     android:paddingTop="25dp"
     android:paddingBottom="20dp"
-    android:paddingStart="5dp"/>
+    android:text="更多功能"
+    android:textColor="#fefefe"
+    android:textSize="15sp" />
