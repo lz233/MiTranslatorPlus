@@ -22,11 +22,11 @@ class AppList {
     fun init() {
         "com.cleargrass.app.babel.launcher.launch.main.MainFragment".hookAfterMethod("onViewCreated", View::class.java, Bundle::class.java) {
             val linearLayout = ViewFields.rootView.getChildAt(0) as LinearLayout
-            val packageManager = Config.context.packageManager
             val moreDrawable = Config.context.resources.getDrawable(2131165304, Config.context.theme)
             getAppList().forEach {
                 linearLayout.addView(LayoutInflater.from(Config.context).inflate(R.layout.view_app, null).apply {
                     //Glide.with(Config.context).load(it.icon).into(this.findViewById(R.id.icon))
+                    this.setOnClickListener { _ -> Config.activity.startActivity(it.launchIntent) }
                     this.findViewById<ImageView>(R.id.icon).setImageDrawable(it.icon)
                     this.findViewById<TextView>(R.id.title).text = it.name
                     this.findViewById<ImageView>(R.id.more).setImageDrawable(moreDrawable)
