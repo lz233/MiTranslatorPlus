@@ -1,0 +1,16 @@
+{
+  "name": "MiTranslator",
+  "version": "1.0.0",
+  "description": "Enhance mi translator experience.",
+  "main": "index.js",
+  "repository": "https://github.com/lz233/MiTranslatorPlus",
+  "author": "lz233",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.35"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}

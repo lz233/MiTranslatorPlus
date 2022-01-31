@@ -36,7 +36,6 @@ class AppList {
                         this.findViewById<ImageView>(R.id.icon).setImageDrawable(it.icon)
                         this.findViewById<TextView>(R.id.title).text = it.name
                         this.findViewById<ImageView>(R.id.more).setImageDrawable(moreDrawable)
-                    })
                 }
             }
         }

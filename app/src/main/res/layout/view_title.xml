@@ -5,6 +5,6 @@
     android:paddingLeft="5dp"
     android:paddingTop="25dp"
     android:paddingBottom="20dp"
-    android:text="更多功能"
+    android:text="More functions"
     android:textColor="#fefefe"
     android:textSize="15sp" />
