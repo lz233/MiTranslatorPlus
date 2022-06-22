@@ -5,6 +5,6 @@
     android:paddingLeft="5dp"
     android:paddingTop="25dp"
     android:paddingBottom="20dp"
-    android:text="More functions"
+    android:text="@string/moreFunctions"
     android:textColor="#fefefe"
     android:textSize="15sp" />
